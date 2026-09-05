@@ -6,7 +6,7 @@
 
 *I think like an investor, and I build like an engineer.*
 
-[Live Site](#) · [LinkedIn](https://www.linkedin.com/in/adityatiwari19/) · [Email](mailto:adityatiwari19@gmail.com)
+[Live Site](https://aditya-tiwari-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/adityatiwari19/) · [Email](mailto:adityatiwari9205@gmail.com)
 
 ![Portfolio preview](images/og-image.png)
 
