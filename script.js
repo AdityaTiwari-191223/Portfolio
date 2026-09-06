@@ -8,7 +8,7 @@
 //   reportUrl   optional path to a PDF write-up (relative — sits in /reports)
 //   modelUrl    optional path to the underlying .xlsx model (relative — sits in /models)
 // The grid renders an intentional "in progress" placeholder when this array is empty.
-const projects = [
+const BUILT_IN_PROJECTS = [
   {
     tag: "LBO Model",
     category: "deal",
@@ -123,7 +123,7 @@ const projects = [
   }
 ];
 
-const insights = [
+const BUILT_IN_INSIGHTS = [
   {
     category: "markets",
     tag: "Sports Business",
@@ -238,6 +238,39 @@ const insights = [
   }
 ];
 
+// ---------- content added via admin.html (stored in this browser only) ----------
+// admin.html keeps one persistent "master list" per content type in localStorage.
+// The first time admin.html runs in a browser, it seeds that list from BUILT_IN_*
+// below. After that, the master list (not BUILT_IN_*) is the source of truth for
+// that browser — adding/removing in admin.html edits it directly, so nothing is
+// ever lost across multiple add-then-export rounds. To make changes visible to
+// everyone who visits the live site (not just this browser), use admin.html's
+// "Save Website File" button, which downloads a fresh script.js with the current
+// master list baked in as BUILT_IN_PROJECTS / BUILT_IN_INSIGHTS.
+function getAllProjects() {
+  try {
+    const master = localStorage.getItem("portfolio-master-projects");
+    if (master) {
+      return JSON.parse(master);
+    }
+  } catch (e) {
+    // fall through to built-in
+  }
+  return BUILT_IN_PROJECTS;
+}
+
+function getAllInsights() {
+  try {
+    const master = localStorage.getItem("portfolio-master-insights");
+    if (master) {
+      return JSON.parse(master);
+    }
+  } catch (e) {
+    // fall through to built-in
+  }
+  return BUILT_IN_INSIGHTS;
+}
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const revealElements = document.querySelectorAll(".reveal");
 const progressRule = document.getElementById("progressRule");
@@ -266,6 +299,8 @@ const modalPostLink = document.getElementById("modalPostLink");
 const modalClose = document.getElementById("modalClose");
 
 function renderProjects(filter) {
+  const projects = getAllProjects();
+
   if (!projects.length) {
     projectGrid.innerHTML = `
       <article class="project-card project-placeholder">
@@ -323,7 +358,7 @@ function activateProjectFilter(button) {
 }
 
 function openProjectModal(index) {
-  const project = projects[index];
+  const project = getAllProjects()[index];
 
   if (!project) {
     return;
@@ -358,7 +393,7 @@ function closeProjectModal() {
 }
 
 function renderInsights(filter) {
-  insightGrid.innerHTML = insights
+  insightGrid.innerHTML = getAllInsights()
     .map((insight, originalIndex) => ({ ...insight, originalIndex }))
     .filter((insight) => !filter || insight.category === filter)
     .map(
@@ -384,7 +419,7 @@ function renderInsights(filter) {
 }
 
 function openModal(index) {
-  const insight = insights[index];
+  const insight = getAllInsights()[index];
 
   if (!insight) {
     return;
@@ -473,6 +508,18 @@ function handleScrollProgress() {
 
 renderProjects("valuation");
 renderInsights("markets");
+
+// If admin.html (in another tab) adds content, refresh this page's grids live.
+window.addEventListener("storage", (event) => {
+  if (event.key === "portfolio-master-projects") {
+    const activeProjectFilter = document.querySelector("#projectFilterGroup .filter-btn.active");
+    renderProjects(activeProjectFilter ? activeProjectFilter.dataset.filter : "valuation");
+  }
+  if (event.key === "portfolio-master-insights") {
+    const activeInsightFilter = document.querySelector("#insights .filter-btn.active");
+    renderInsights(activeInsightFilter ? activeInsightFilter.dataset.filter : "markets");
+  }
+});
 handleReveal();
 handleSectionSpy();
 handleScrollProgress();
