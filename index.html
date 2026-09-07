@@ -9,19 +9,17 @@
     content="Aditya Tiwari — corporate finance and fintech portfolio: experience, financial models, and public writing."
   >
 
-  <!-- Open Graph / social preview. NOTE: once this site is hosted, replace the
-       relative og:image / og:url paths below with absolute URLs (e.g.
-       https://yourdomain.com/images/og-image.png) — most platforms (LinkedIn,
-       WhatsApp, iMessage) won't resolve relative paths when unfurling a link. -->
+  <!-- Open Graph / social preview -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Aditya Tiwari | Corporate Finance & Financial Technology">
   <meta property="og:description" content="Experience, financial models, and public writing — corporate finance and fintech, worked end to end.">
-  <meta property="og:image" content="images/og-image.png">
-  <meta property="og:url" content="">
+  <meta property="og:image" content="https://aditya-tiwari-portfolio.vercel.app/images/og-image.png">
+  <meta property="og:url" content="https://aditya-tiwari-portfolio.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aditya Tiwari | Corporate Finance & Financial Technology">
   <meta name="twitter:description" content="Experience, financial models, and public writing — corporate finance and fintech, worked end to end.">
-  <meta name="twitter:image" content="images/og-image.png">
+  <meta name="twitter:image" content="https://aditya-tiwari-portfolio.vercel.app/images/og-image.png">
+  <link rel="canonical" href="https://aditya-tiwari-portfolio.vercel.app/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -193,7 +191,10 @@
         <div class="timeline reveal">
           <article class="timeline-item">
             <div class="timeline-date">
-              <img class="company-mark" src="images/companies/nic-logo.png" alt="National Informatics Centre">
+              <span class="company-mark">
+                <img src="images/companies/nic-logo.png" alt="National Informatics Centre" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing')">
+                <span class="mark-text">NIC</span>
+              </span>
               Jul 2025 – Aug 2025
             </div>
             <div class="timeline-body">
@@ -210,9 +211,9 @@
           <article class="timeline-item">
             <div class="timeline-date">
               <span class="company-mark">
-  <img src="images/companies/admitad-logo.png" alt="Admitad India" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing')">
-  <span class="mark-text">AI</span>
-</span>
+                <img src="images/companies/admitad-logo.png" alt="Admitad India" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing')">
+                <span class="mark-text">AI</span>
+              </span>
               Jun 2025 – Aug 2025
             </div>
             <div class="timeline-body">
@@ -229,9 +230,9 @@
           <article class="timeline-item">
             <div class="timeline-date">
               <span class="company-mark">
-  <img src="images/companies/infinite-ai-logo.png" alt="Infinite AI Technologies" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing')">
-  <span class="mark-text">IAT</span>
-</span>
+                <img src="images/companies/infinite-ai-logo.png" alt="Infinite AI Technologies" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing')">
+                <span class="mark-text">IAT</span>
+              </span>
               Jun 2024 – Nov 2025
             </div>
             <div class="timeline-body">
@@ -362,7 +363,8 @@
           </p>
 
           <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:adityatiwari19@gmail.com">Email me</a>
+            <a class="btn btn-primary" href="https://cal.com/aditya-tiwari-npzhxh/portfolio" target="_blank" rel="noreferrer">Book a call</a>
+            <a class="btn btn-secondary" href="mailto:adityatiwari19@gmail.com">Email me</a>
             <a class="btn btn-secondary" href="https://www.linkedin.com/in/adityatiwari19/" target="_blank" rel="noreferrer">Message on LinkedIn</a>
             <a class="btn btn-secondary" href="assets/Aditya_Tiwari_Resume.pdf" target="_blank" rel="noreferrer">Download résumé</a>
           </div>
