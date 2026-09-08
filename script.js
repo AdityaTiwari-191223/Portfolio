@@ -506,18 +506,28 @@ function handleScrollProgress() {
   window.addEventListener("resize", update);
 }
 
+function updateGlanceStats() {
+  const modelsEl = document.getElementById("stat-models-count");
+  const articlesEl = document.getElementById("stat-articles-count");
+  if (modelsEl) modelsEl.textContent = getAllProjects().filter((p) => p.modelUrl).length;
+  if (articlesEl) articlesEl.textContent = getAllInsights().length;
+}
+
 renderProjects("valuation");
 renderInsights("markets");
+updateGlanceStats();
 
 // If admin.html (in another tab) adds content, refresh this page's grids live.
 window.addEventListener("storage", (event) => {
   if (event.key === "portfolio-master-projects") {
     const activeProjectFilter = document.querySelector("#projectFilterGroup .filter-btn.active");
     renderProjects(activeProjectFilter ? activeProjectFilter.dataset.filter : "valuation");
+    updateGlanceStats();
   }
   if (event.key === "portfolio-master-insights") {
     const activeInsightFilter = document.querySelector("#insights .filter-btn.active");
     renderInsights(activeInsightFilter ? activeInsightFilter.dataset.filter : "markets");
+    updateGlanceStats();
   }
 });
 handleReveal();
