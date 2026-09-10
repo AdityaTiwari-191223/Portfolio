@@ -120,6 +120,82 @@ const BUILT_IN_PROJECTS = [
       "Deliberately includes Rapid7 as a stress test: statistically cheap on trailing EV/EBITDA, but hard to underwrite amid activist involvement and a 2026 CEO transition"
     ],
     modelUrl: "models/PE_Target_Screening_Model.xlsx"
+  },
+  {
+    tag: "Earnings Forecast",
+    category: "valuation",
+    title: "Apple Inc. — Q4 FY2026 Earnings Forecast",
+    verdict: "HOLD: anchored on Apple's own July 30 guidance, base case lands at $112.75bn revenue and $1.95 EPS — modestly below Street's $1.98 — with a $325.09 target implying just 1.3% upside.",
+    stats: [
+      { label: "Target price", value: "$325.09" },
+      { label: "Implied upside", value: "+1.3%" },
+      { label: "Q4 revenue (base)", value: "$112.75bn" },
+      { label: "Q4 EPS (base)", value: "$1.95" }
+    ],
+    points: [
+      "Built bottom-up from the dead-center of Apple's own guidance range (revenue +9–11%, gross margin 47–48%, opex $19.1–19.4bn), not a self-derived assumption or third-party consensus",
+      "Published 54 days ahead of the actual print, with an explicit post-earnings grading plan built in up front",
+      "Flags two real but non-modeled factors — a CEO transition to John Ternus and a Google-powered Siri relaunch — as context, without letting either inflate the number above management's own guidance"
+    ],
+    reportUrl: "reports/AAPL_Q4FY26_Earnings_Forecast.pdf",
+    modelUrl: "models/AAPL_Q4FY26_Earnings_Forecast.xlsx"
+  },
+  {
+    tag: "Credit Scorecard",
+    category: "screening",
+    title: "Digital Lending — Credit Scorecard Benchmarked to Bajaj Finance",
+    verdict: "An 8-factor credit scorecard, stress-tested on a simulated 10,000-applicant pool, lands within 5 basis points of Bajaj Finance's actual disclosed credit cost — and shows subprime tiers generating more profit per loan than prime.",
+    stats: [
+      { label: "Scoring factors", value: "8" },
+      { label: "Modeled default rate", value: "1.36%" },
+      { label: "BFL actual credit cost", value: "1.31%" },
+      { label: "Modeled approval rate", value: "98%" }
+    ],
+    points: [
+      "Builds a standard-practice underwriting framework from scratch, then checks its simulated portfolio-level output against a real lender's actual disclosed numbers, rather than presenting synthetic data as real",
+      "Calibrated to Bajaj Finance, India's largest NBFC by AUM, chosen specifically for its unusually strong asset quality (0.96% GNPA) and quarterly disclosure depth",
+      "The five risk tiers, once risk-based pricing is applied, show higher-risk tiers generating more profit per loan than the prime tier — prime's real value is stability, not margin"
+    ],
+    reportUrl: "reports/BAJAJ_Digital_Lending_Model.pdf",
+    modelUrl: "models/BAJAJ_Digital_Lending_Model.xlsx"
+  },
+  {
+    tag: "Sector Valuation",
+    category: "valuation",
+    title: "India Banking Sector — 15-Bank Valuation Initiation",
+    verdict: "PSU banks post a higher average ROE than private banks (16.0% vs. 13.0%) while trading at less than half the book multiple — a Gordon Growth framework turns that gap into 3 explicit BUY-rated PSU names and 3 explicit SELL-rated private names.",
+    stats: [
+      { label: "Banks covered", value: "15" },
+      { label: "PSU / Private avg ROE", value: "16.0% / 13.0%" },
+      { label: "PSU / Private avg P/B", value: "0.94x / 1.74x" },
+      { label: "Explicit ratings", value: "3 BUY / 3 SELL" }
+    ],
+    points: [
+      "Covers a full Q1 FY27 dataset across 15 banks (7 private, 8 PSU), running actual bank-specific ROE through a standard Fair P/B = (ROE−g)/(Ke−g) framework to produce explicit calls, not just commentary",
+      "Values the embedded listed-subsidiary stakes at the three banks that have them, on top of the core banking valuation",
+      "Traces the sector's history — the 2015–16 AQR crisis through 27-to-12 PSU consolidation to today's record profitability — to explain why the mispricing exists, after the numbers, not before"
+    ],
+    reportUrl: "reports/India_Banking_Sector_Report.pdf",
+    modelUrl: "models/India_Banking_Sector_Analysis.xlsx"
+  },
+  {
+    tag: "Sector Deep Dive",
+    category: "valuation",
+    title: "India Quick Commerce — Forensic Sector Deep Dive",
+    verdict: "Blinkit is the only one of the big three genuinely profitable by a real measure (1.1% Adjusted EBITDA margin) — Instamart's 'contribution breakeven' still lost ₹778 crore last quarter, and Zepto's own RoC filing doesn't match its IPO prospectus.",
+    stats: [
+      { label: "Share: Blinkit/Instamart/Zepto", value: "46% / 24% / 22%" },
+      { label: "Blinkit Adj. EBITDA margin", value: "1.1%" },
+      { label: "Instamart Adj. EBITDA (Q1FY27)", value: "-₹778cr" },
+      { label: "Zepto loss growth, FY26", value: "+26%" }
+    ],
+    points: [
+      "Puts Gross Order Value, Revenue, Contribution Margin, Adjusted EBITDA, and actual Net Profit/Loss for all three players on the same page in the same units, instead of letting each company's preferred metric stand alone",
+      "Flags that a meaningful share of Blinkit's headline 182% YoY revenue growth is an accounting shift (marketplace to 1P inventory booking), not organic demand",
+      "Documents a specific discrepancy between Zepto's own RoC filing and its IPO prospectus for the identical fiscal year's revenue and losses"
+    ],
+    reportUrl: "reports/India_QuickCommerce_Report.pdf",
+    modelUrl: "models/India_QuickCommerce_Analysis.xlsx"
   }
 ];
 
